@@ -5,7 +5,7 @@ export interface IMessage extends mongoose.Document {
   sender: mongoose.Types.ObjectId;
   content: string;
   messageType: "Text" | "image" | "file";
-  sendBy: {
+  seenBy: {
     user: mongoose.Types.ObjectId;
     seenAt: Date;
   }[];
@@ -35,7 +35,7 @@ const MessageSchema = new mongoose.Schema(
       enum: ["text", "image", "file"],
       default: "text",
     },
-    sendBy: [
+    seenBy: [
       {
         user: {
           type: mongoose.Schema.Types.ObjectId,
